@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Table extends Component {
     render() {
-        const {tabularData} = this.props;
+        const {tabularData, removeData} = this.props;
         return(
             <table>
                 {/* <thead>
@@ -31,7 +31,7 @@ class Table extends Component {
                 </tbody> */}
 
                 <TableHeader />
-                <TableBody tabularData = {tabularData} />
+                <TableBody tabularData = {tabularData} removeData = {removeData} />
 
             </table>
         );
@@ -58,6 +58,7 @@ const TableBody = props => {
             <tr key={index}>
                 <td>{row.name}</td>
                 <td>{row.job}</td>
+                <td><button onClick = {() => props.removeData(index)}>Delete</button></td>
             </tr>
         );
     });
