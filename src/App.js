@@ -1,27 +1,29 @@
 import React, {Component} from 'react';
 import Table from './Table';
+import Form from './Form';
 
 class App extends Component {
     state = {
         tableDetails: [
-            {
-                'name': 'Bob',
-                'job': 'Manager'
-            },
-            {
-                'name': 'Mohsen',
-                'job': 'Senior Dev'
-            },
-            {
-                'name': 'Wyatt',
-                'job': 'Senior Dev'
-            },
-            {
-                'name': 'Abhishek',
-                'job': 'Junior Dev'
-            }
+            // {
+            //     'name': 'Bob',
+            //     'job': 'Manager'
+            // },
+            // {
+            //     'name': 'Mohsen',
+            //     'job': 'Senior Dev'
+            // },
+            // {
+            //     'name': 'Wyatt',
+            //     'job': 'Senior Dev'
+            // },
+            // {
+            //     'name': 'Abhishek',
+            //     'job': 'Junior Dev'
+            // }
         ]
     };
+
     removeData = index => {
         const {tableDetails} = this.state;
 
@@ -30,6 +32,10 @@ class App extends Component {
                 return i !== index;
             })
         });
+    }
+
+    handleSubmit = tabledata => {
+        this.setState({tabledata: [...this.state.tableDetails, tabledata]});
     }
     render() {
 
@@ -63,6 +69,8 @@ class App extends Component {
                  tabularData = {tableDetails}
                  removeData = {this.removeData}
                  />
+
+                 <Form handleSubmit = {this.handleSubmit} />
             </div>
 
         );
